@@ -33,8 +33,6 @@ const useNavigation = () => {
 		],
 		[pathname, requestsCount, unssenMessageCount]
 	);
-	console.log(paths);
-
 	return paths;
 };
 
