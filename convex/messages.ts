@@ -38,7 +38,7 @@ export const get = query({
 					throw new Error('Could not find sender of message!');
 				}
 				return {
-					...message,
+					message,
 					senderImage: msgSender.imageUrl,
 					senderName: msgSender.name,
 					isCurrentUser: msgSender._id === currentUser._id,

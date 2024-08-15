@@ -25,18 +25,22 @@ export default defineSchema({
 	})
 		.index('by_user1', ['user1'])
 		.index('by_user2', ['user2'])
-		.index('by_chatId', ['chatId']),
+		.index('by_chatId', ['chatId'])
+		.index('by_user1_user2', ['user1', 'user2'])
+		.index('by_user2_user1', ['user2', 'user1']),
 
 	chats: defineTable({
 		name: v.optional(v.string()),
 		isGroup: v.boolean(),
 		lastMessageId: v.optional(v.id('messages')),
-	}),
+		lastMessageAt: v.optional(v.number()),
+	}).index('by_lastMessageAt', ['lastMessageAt']),
 
 	chatMembers: defineTable({
 		memberId: v.id('users'),
 		chatId: v.id('chats'),
-		lastSeenMessage: v.optional(v.id('messages')),
+		lastSeenMessageId: v.optional(v.id('messages')),
+		lastSeenAt: v.optional(v.number()),
 	})
 		.index('by_memberId', ['memberId'])
 		.index('by_chatId', ['chatId'])

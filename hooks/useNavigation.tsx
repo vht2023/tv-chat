@@ -10,6 +10,9 @@ import { useMemo } from 'react';
 const useNavigation = () => {
 	const pathname = usePathname();
 	const requestsCount = useQuery(api.requests.count);
+	const chats = useQuery(api.chats.get);
+
+	const unssenMessageCount = useMemo(() => chats?.reduce((acc, curr) => acc + curr.unssenCount, 0), [chats]);
 
 	const paths = useMemo(
 		() => [
@@ -18,6 +21,7 @@ const useNavigation = () => {
 				href: '/chat',
 				icon: <MessageCircle />,
 				active: pathname.startsWith('/chat'),
+				count: unssenMessageCount,
 			},
 			{
 				name: 'People',
@@ -27,8 +31,10 @@ const useNavigation = () => {
 				count: requestsCount,
 			},
 		],
-		[pathname, requestsCount]
+		[pathname, requestsCount, unssenMessageCount]
 	);
+	console.log(paths);
+
 	return paths;
 };
 

@@ -37,7 +37,7 @@ const AddPeopleDialog = () => {
 		<Dialog onOpenChange={() => form.reset()}>
 			<Tooltip>
 				<TooltipTrigger>
-					<Button size='icon' variant='ghost'>
+					<Button size='icon' variant='ghost' className='rounded-full hover:bg-white/20'>
 						<DialogTrigger>
 							<UserPlus />
 						</DialogTrigger>

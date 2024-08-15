@@ -8,7 +8,7 @@ import { useChat, useMutationState } from '@/hooks';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { ConvexError } from 'convex/values';
 import { SendHorizontal } from 'lucide-react';
-import React, { useRef } from 'react';
+import React from 'react';
 import { useForm } from 'react-hook-form';
 import { toast } from 'sonner';
 import { z } from 'zod';
@@ -53,6 +53,7 @@ const ChatInput = () => {
 										style={{
 											resize: 'none',
 										}}
+										autoFocus
 										minHeight={36}
 										maxHeight={108}
 										placeholder='Aa'

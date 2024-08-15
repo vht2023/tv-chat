@@ -51,6 +51,15 @@ const config = {
 				'bgr-base': {
 					DEFAULT: '#222222',
 				},
+				'bgr-dialog': {
+					DEFAULT: '#303030',
+				},
+				'bgr-action-secondary': {
+					DEFAULT: '#575757',
+				},
+				'bgr-blue-primary': {
+					DEFAULT: '#0084FF',
+				},
 			},
 			borderRadius: {
 				lg: 'var(--radius)',

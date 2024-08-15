@@ -8,25 +8,21 @@ import React, { useMemo } from 'react';
 
 type Props = {
 	id: Id<'chats'>;
-	imageUrl: string;
 	name: string;
 	lastMessageSender?: string;
 	lastMessageContent?: string;
 	unseen?: boolean;
 };
 
-const ChatItem = ({ id, imageUrl, name, lastMessageSender, lastMessageContent, unseen }: Props) => {
+const GroupChatItem = ({ id, name, lastMessageSender, lastMessageContent, unseen }: Props) => {
 	const params = useParams();
 	const actived = useMemo(() => params?.id === id, [params, id]);
 
 	return (
 		<Link href={`/chat/${id}`} className={cn(['flex items-center p-2 text-sm gap-3 hover:bg-white/20 rounded-lg cursor-pointer', actived && 'bg-white/20'])}>
-			<div className='min-w-12 w-12 min-h-12'>
-				<Avatar className='w-12 h-12'>
-					<AvatarImage src={imageUrl} />
-					<AvatarFallback>
-						<User />
-					</AvatarFallback>
+			<div className='flex items-center gap-4'>
+				<Avatar className='w-12 h-12 text-lg text-white font-500'>
+					<AvatarFallback>{name.charAt(0).toLocaleUpperCase()}</AvatarFallback>
 				</Avatar>
 			</div>
 			<div className='w-full truncate space-y-1.5'>
@@ -43,11 +39,11 @@ const ChatItem = ({ id, imageUrl, name, lastMessageSender, lastMessageContent, u
 			</div>
 			{unseen && (
 				<div className='h-full flex-center'>
-					<div className='w-2 h-2 rounded-full bg-bgr-blue-primary' />
+					<div className='w-2 h-2 rounded bg-bgr-blue-primary' />
 				</div>
 			)}
 		</Link>
 	);
 };
 
-export default ChatItem;
+export default GroupChatItem;
